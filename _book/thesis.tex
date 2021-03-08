@@ -1,0 +1,471 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  openany, oneside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+% start preamble.tex
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\centering \normalsize \huge  \color{black}}{\chaptertitlename \ \thechapter}{12pt}{}
+
+\usepackage{setspace}\doublespacing
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+% end preamble.tex
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+
+% start doc_preface.tex
+\pagestyle{plain}
+   \thispagestyle{empty}
+   \null\vskip.5in
+   \begin{center}
+      {\Large\uppercase{Thesis Title}}
+   \end{center}
+   \vfill
+   \begin{center}
+      A Thesis\\
+      Submitted to the Faculty of Graduate Studies and Research\\
+      In Partial Fulfillment of the Requirements\\
+      For the Degree of\\
+      \vfill
+      Doctor of Philosophy\\
+      in \\
+      Statistics\\
+      University of Regina\\
+   \end{center}
+   \vfill
+   \begin{center}
+      By\\
+      NameName\\
+      Regina, Saskatchewan\\
+      Month, Year\\
+   \end{center}
+   \vfill
+   \begin{center}
+      \copyright\ Copyright Year: NameName\\
+   \end{center}
+   \vskip.5in\newpage
+
+\pagenumbering{roman}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\input{tex/abstract}
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{tex/acknowledgements}
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\newpage
+
+\pagenumbering{arabic}
+% end doc_preface.tex
+
+\chapter{Introduction}\label{intro}
+
+To render the file, run ``compile.R'' from RStudio.
+
+Reference to Chapter \ref{intro}. Reference to section \ref{section}. Reference to subsection \ref{subsection}. When the thesis is ``knit'' correctly you can also reference other chapters, like Chapter \ref{background}. Reference to citation in ``book.bib'' file, (\citeproc{ref-dobson2018introduction}{Dobson \& Barnett, 2018}). Or like this Dobson \& Barnett (\citeproc{ref-dobson2018introduction}{2018}).
+
+\section{Section}\label{section}
+
+Reference to Table \ref{tab:relativeefficiencytab}.
+
+\begin{table}
+
+\caption{\label{tab:relativeefficiencytab}Relative Efficiency of Unified Estimate for Average}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & rho = 0 & rho = 0.2 & rho = 0.4 & rho = 0.6 & rho = 0.8\\
+\hline
+pi = 0.8 & 1 & 1.008 & 1.033 & 1.078 & 1.147\\
+\hline
+pi = 0.6 & 1 & 1.016 & 1.068 & 1.168 & 1.344\\
+\hline
+pi = 0.4 & 1 & 1.025 & 1.106 & 1.276 & 1.623\\
+\hline
+pi = 0.2 & 1 & 1.033 & 1.147 & 1.404 & 2.049\\
+\hline
+\end{tabular}
+\end{table}
+
+Reference to Figure \ref{fig:relativeefficiencygraph}.
+
+\begin{figure}
+\centering
+\includegraphics{thesis_files/figure-latex/relativeefficiencygraph-1.pdf}
+\caption{\label{fig:relativeefficiencygraph}Relative Efficiency of Unified Estimate for Average}
+\end{figure}
+
+Reference to Equation \eqref{eq:mestimatescore}.
+
+\begin{equation}
+0 = \frac{1}{n}\sum_{i=1}^n \psi(X_i,\hat{\beta})
+\label{eq:mestimatescore}
+\end{equation}
+
+Equations can also be used without numbering. Using \$\$ allows RStudio to render it in the editor window.
+
+\[
+0 = \frac{1}{n}\sum_{i=1}^n \psi(X_i,\hat{\beta})
+\]
+
+\emph{When writing in RStudio I found it easier to have two copies of the formula in the file, one using ``\$\$'' and one using \textbackslash begin\{equation\}. That way I could see the rendering of the formula which I found easier to proofread than the raw latex. I ``commented out'' or deleted the duplicate formula before sending it to my supervisor. \textasciitilde{} Luke T}
+
+You can access the special Lemma, Theorem, and Proposition environments as well.
+
+Reference to Lemma \ref{lem:Sefling721A}.
+
+\begin{lemma}[Serfling 1980 Lemma 7.2.1 A]
+\protect\hypertarget{lem:Sefling721A}{}\label{lem:Sefling721A}Let \(\beta^*\) be an isolated root of \(\lambda_F(\beta) = 0\). Let \(\psi(X,\beta)\) be monotone in \(\beta\). Then \(\beta^*\) is unique and any solution sequence \(\{\hat{\beta_n}\}\) of the empirical equation \(\lambda_{F_n}(\beta) = 0\) converges to \(\beta^*\) with probability 1. If, further, \(\psi(X,\beta)\) is continuous in \(\beta\) in a neighborhood of \(\beta^*\), then there exists such a solution sequence.
+\end{lemma}
+
+Reference to Theorem \ref{thm:Sefling722A}.
+
+\begin{theorem}[Serfling 1980 Theorem 7.2.2 A]
+\protect\hypertarget{thm:Sefling722A}{}\label{thm:Sefling722A}Let \(\beta^*\) be an isolated root of \(\lambda_F(\beta) = 0\). Let \(\psi(X,\beta)\) be monotone in \(\beta\). Suppose that \(\lambda_F(\beta)\) is differentiable at \(\beta = \beta^*\), with \(\lambda^\prime_F(\beta^*) \neq 0\). Suppose that \(\int\psi^2(X,\beta)dF(x)\) is finite for \(\beta\) in a neighborhood of \(\beta^*\) and is continuous at \(\beta = \beta^*\). Then any solution sequence \(\hat{\beta}_n\) of the empirical equation \(\lambda_{F_n}(\beta) = 0\) satisfies
+\[
+n^{1/2}(\hat{\beta}_n - \beta^*) \overset{d}\to N(0,\frac{\int\psi^2(X,\beta^*)dF(x) }{ [\lambda^\prime_F(\beta)]^2}
+\]
+\end{theorem}
+
+You can include Code Blocks to show the code and R formatting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Confirm the theoretical results}
+\FunctionTok{library}\NormalTok{(MASS)}
+\NormalTok{nobs }\OtherTok{\textless{}{-}} \DecValTok{500}
+\NormalTok{cor }\OtherTok{\textless{}{-}} \FloatTok{0.8}
+\NormalTok{pi }\OtherTok{\textless{}{-}} \FloatTok{0.8} \CommentTok{\# pi is observation probability}
+\NormalTok{gen\_dat }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(nobs,cor,pi) \{}
+\NormalTok{  Sigma }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,cor,cor,}\DecValTok{1}\NormalTok{),}
+                  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{  dat }\OtherTok{\textless{}{-}} \FunctionTok{mvrnorm}\NormalTok{(}\AttributeTok{n =}\NormalTok{ nobs, }\AttributeTok{mu =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{Sigma =}\NormalTok{ Sigma)}
+\NormalTok{  dat[}\FunctionTok{rbinom}\NormalTok{(nobs,}\DecValTok{1}\NormalTok{,pi) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dat[,}\DecValTok{1}\NormalTok{],}
+                    \AttributeTok{y =}\NormalTok{ dat[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Subsection}\label{subsection}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\chapter{Background}\label{background}
+
+A complicated table, for example.
+
+\begin{table}
+\caption{\label{tab:t1a} Simulation Results} 
+\centering
+ \def\~{\hphantom{0}}
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{.95}
+%\resizebox{\textwidth}{!}
+%{
+\begin{tabular}{rlrrrrrrrrrrrrrrrrrrr}
+\hline\noalign{\smallskip}
+ && \multicolumn{3}{c}{$|Bias|$} && \multicolumn{3}{c}{$s.d.$} && \multicolumn{3}{c}{RMSE} && \multicolumn{3}{c}{$95\% CP$}&& \multicolumn{3}{c}{$s.e.$}\\
+ \cline{3-5} \cline{7-9} \cline{11-13} \cline{15-17} \cline{19-21}
+$N$&& $\beta_1$ & $\beta_2$ & $\beta_3$ &&  $\beta_1$ & $\beta_2$ & $\beta_3$ &&  $\beta_1$ & $\beta_2$ & $\beta_3$ &&  $\beta_1$ & $\beta_2$  & $\beta_3$ && $\beta_1$ & $\beta_2$  & $\beta_3$\\
+\hline\noalign{\smallskip}
+& \multicolumn{20}{c}{(A) The missingness is independent of the failure time}\\
+\noalign{\smallskip}
+500
+& full    & 2  &  5 &   6 &&    156  & 192 &  130 &&  156 &   192 &   131  &&  96.5  & 94.8 &  94.4 &&  163 &   186  & 130 \\
+& CC     & 11  & 15 & 14 &&    245  & 278 &  191 &&  245 &   279 &   191   && 94.2  & 94.8 &  94.5  && 242 &  274  & 191 \\
+& WCC  & 7  &  15 & 14 &&    252 &  280 &  194 &&  252 &   280  &  194   && 93.2  & 93.7  & 94.0 &&    244 &  275 &  192 \\
+& MI     & 2  &   15 & 13 &&    168 &  264 &  185 &&  168 &   264  &  186   && 96.7  & 93.5  & 93.0 &&     175 &  251 &  180 \\
+& UE    & 16  &   13 &  13 &&    174 &  256 &  179 &&  175 &   256 &   180   && 95.1  & 93.0  &   93.7 &&  174 &  248  & 177 \\
+& UE$^*$  & 10 &  19 &  15 &&    176 &  258 &  182 &&  176 &   259  &  182   && 95.0    & 94.0 &    93.8 &&  181 &  257 &  184 \\
+& UE$^{cc}$  & 11 & 13 & 13 &&    173 &  255 &  177 &&  173 &   255  &  178   && 95.3  & 93.6  & 94.1 &&  173 &  246 &  176 \\
+& UE$^{cc*}$  & 12 & 18 & 15 &&    174 &  258 &  180 &&  174 &   259 &   180  &&  96.1 &  93.3 &  94.7 &&  181 &  255 &  183 \\
+\noalign{\smallskip}
+1000
+& full     & 1 & 5 &    4 &&    113 &  132 &  92  &&  113  &  132  &  92   &&  95.1 &  95.6  & 94.9 &&  114  & 131 &  92  \\
+& CC      & 6 & 10 &    5 &&    159 &  195 &  130 &&  159  &  195 &   130 &&   95.7 &  94.4 &  95.2 &&  168 &  192 &  134 \\
+& WCC    & 6 & 10 &    4 &&   165  & 196  & 132 &&  165  &  196   & 132  &&  95.4 &  93.8  & 95.1 &&  170  & 192  & 134 \\
+& MI     & 4 & 11 &   6 &&    121 &  181  & 127  && 121  &  181   & 128   && 95.0 &   93.6 &  94.0  &&   122 &  178 &  127 \\
+& UE     & 13 & 10 &   6 &&    125  & 182  & 126  && 125  &  182   & 126   && 93.5 &  93.5 &  94.3  && 122  & 174  & 124 \\
+& UE$^*$ & 9 & 12 &    7 &&     126 &  183 &  126 &&  126 &   183  &  126  &&  94.4 &  94.5 &  94.8 &&  125  & 176 &  126 \\
+& UE$^{cc}$ & 10 &  11 &   7 &&    125  & 180  & 125 &&  125  &  181  &  125   && 92.9 &  93.3 &  94.4  && 122  & 173 &  124 \\
+& UE$^{cc*}$ &  11 &  13 &   7 &&    127  & 180  & 125  && 127  &  181   & 125   && 94.2  & 94.2  & 94.8  && 125  & 175 &  125 \\
+
+\noalign{\smallskip}
+& \multicolumn{20}{c}{(B) The missingness depends on the failure time}\\
+\noalign{\smallskip}
+500 
+& full      & 2  &    5 &      6 &&     156  & 192 &  130 &&  156  &  192  &  131  &&  96.5 &  94.8 &  94.4 &&  163 &  186 &  130 \\
+& CC       & 136 &  65 &   38 &&    195 &  233 &  158 &&  237  &  242  &  163  &&  89.9 &  92.8  & 93.5 &&  197 &  225  & 157 \\
+& WCC    & 7   &  10 &   10  &&   187 &  227 &  154  && 187  &  227  &  154   && 96.0 &   93.4 &  94.6 &&  194 &  219 &  153 \\
+& MI       & 3    & 9 &     8  &&   157  & 215   &  147  && 157  &  215  &  147   && 96.6  & 94.0  &   94.8 &&  166 &  210  & 148 \\
+& UE       & 14  &  10 &   9   &&   161 &  216 &  149  &&  162 &   216  &  149   && 96.6  & 94.4  & 94.8  && 167 &  215  & 153 \\
+& UE$^*$ & 4    & 8 &     9  &&   163  & 219  &  150  &&  163  &  219  &  151   && 95.9  & 94.0  &   94.2 &&  167 &  211 &  150 \\
+& UE$^{cc}$ & 27  &  50 &   36 &&    164  & 223 &  153 &&  166  &  228  &  157   && 95.9  & 93.5 &  93.3  && 166 &  214  & 151 \\
+& UE$^{cc*}$ & 18  &  51 &    37 &&    167 &  227 &  156 && 168 &   233  &  160   && 95.6  & 93.3 &  93.6 &&  170 &  218  & 154 \\
+\noalign{\smallskip}
+1000
+& full       & 1 &     5  &   4   &&   113 &  132 &  92   && 113  &  132  &  92   &&  95.1  & 95.6  & 94.9  && 114  & 131 &  92  \\
+& CC       & 136 &   59 &   30 &&   136 &  160  & 111  && 192  &  170 &   115 &&   83.5  & 94.1 &  95.1  && 138 &  158 &  110 \\
+& WCC     & 8 &      5   &  2   &&  132 &  155  & 107  && 132  &  155  &  107  &&  95.9  & 94.8  & 95.3  && 136  & 154  & 107 \\
+& MI        & 2 &      6   &  5   &&  114  & 149  & 105  && 114  &  149  &  105  &&  95.7  & 95.0  &   95.1 && 116  & 147  & 104 \\
+& UE       & 7 &      5   &  3  &&   116  & 149  & 105  && 116  &  149  &  105  &&  95.0 &   95.9  & 95.5  && 117 &  151  & 108  \\ 
+& UE$^*$  & 3 &      3   &  2  &&   117  & 150  & 105  && 117  &  150  &  105  &&  95.0 &   95.3 &  94.5  && 116 &  147  & 104 \\
+& UE$^{cc}$ & 24 &    44  & 30  &&   118 &  153 &  108 &&  121 &   160 &   112 &&   94.4 &  94.0   &  94.2  && 117  & 150  & 107 \\
+& UE$^{cc*}$ & 15 &    47 & 33   &&  118  & 156  & 110  && 119 &   163 &   115  &&  95.2  & 93.1  & 93.1  && 118  & 151  & 106 \\
+
+\noalign{\smallskip}\hline
+\multicolumn{21}{p{5.82in}}{\scriptsize{Entries of absolute value of bias ($|bias|$), empirical standard deviation ($s.d.$), square root of MSE (RMSE) and standard error ($s.e.$) are multiplied by 1000, and coverage rates of $95\%$ confidence interval ($95\%CP$) are multiplied by 100.}} 
+\end{tabular}
+%}
+\end{table}
+
+\chapter{Conclusion and Future Work}\label{futurework}
+
+The end!
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-dobson2018introduction}
+Dobson, A. J., \& Barnett, A. G. (2018). \emph{An introduction to generalized linear models}. CRC Press.
+
+\end{CSLReferences}
+
+\appendix
+
+
+\chapter{Proofs}\label{appendixproofs}
+
+\section{Proof of Optimality}\label{proof-of-optimality}
+
+The asymptotic variance of an alternative estimator \(\tilde{\beta} = \hat{\beta} - (\Sigma_{12}\Sigma_{22}^{-1} + B)(\hat{\gamma} - \hat{\gamma}^{\prime})\) with \(B\) a conformable matrix, can be found as
+\[
+\begin{aligned}
+V[\tilde\beta] = &V[\hat{\beta} + (-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})] \\
+= &V[\hat{\beta}] +
+Cov[\hat{\beta},(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})] +\\
+&Cov[(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime}),\hat{\beta}] +
+V[(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})]  \\
+= &V[\hat{\beta}] + 
+Cov[\hat{\beta},(\hat{\gamma} - \hat{\gamma}^{\prime})](-\Sigma_{12}\Sigma_{22}^{-1} - B)^T +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)Cov[(\hat{\gamma} - \hat{\gamma}^{\prime}),\hat{\beta}] +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)V[(\hat{\gamma} - \hat{\gamma}^{\prime})](-\Sigma_{12}\Sigma_{22}^{-1} - B)^T\\
+= &\Sigma_{11} + 
+\Sigma_{12}(-\Sigma_{12}\Sigma_{22}^{-1} - B)^T +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)\Sigma_{21} +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)\Sigma_{22}(-\Sigma_{12}\Sigma_{22}^{-1} - B)^T\\
+= &\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} + B\Sigma_{22}B^T
+\end{aligned}
+\]
+
+\section{Example of Efficiency of Unified Estimate}\label{example-of-efficiency-of-unified-estimate}
+
+The remaining details for the example are now given. For the estimating equations
+\[
+S(\theta,X) = \begin{pmatrix}
+R(y - \beta)\\
+R(x - \gamma)\\
+(x - \gamma^{\prime})
+\end{pmatrix}
+\]
+We did some math.
+
+\chapter{R Code}\label{allrcode}
+
+Any extra code you want to include could go here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

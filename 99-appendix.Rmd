@@ -1,0 +1,52 @@
+
+<!-- \appendix -->
+# (APPENDIX) Appendix {-} 
+
+# Proofs {#appendixproofs}
+
+## Proof of Optimality
+
+The asymptotic variance of an alternative estimator $\tilde{\beta} = \hat{\beta} - (\Sigma_{12}\Sigma_{22}^{-1} + B)(\hat{\gamma} - \hat{\gamma}^{\prime})$ with $B$ a conformable matrix, can be found as
+$$
+\begin{aligned}
+V[\tilde\beta] = &V[\hat{\beta} + (-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})] \\
+= &V[\hat{\beta}] +
+Cov[\hat{\beta},(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})] +\\
+&Cov[(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime}),\hat{\beta}] +
+V[(-\Sigma_{12}\Sigma_{22}^{-1} - B)(\hat{\gamma} - \hat{\gamma}^{\prime})]  \\
+= &V[\hat{\beta}] + 
+Cov[\hat{\beta},(\hat{\gamma} - \hat{\gamma}^{\prime})](-\Sigma_{12}\Sigma_{22}^{-1} - B)^T +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)Cov[(\hat{\gamma} - \hat{\gamma}^{\prime}),\hat{\beta}] +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)V[(\hat{\gamma} - \hat{\gamma}^{\prime})](-\Sigma_{12}\Sigma_{22}^{-1} - B)^T\\
+= &\Sigma_{11} + 
+\Sigma_{12}(-\Sigma_{12}\Sigma_{22}^{-1} - B)^T +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)\Sigma_{21} +\\
+&(-\Sigma_{12}\Sigma_{22}^{-1} - B)\Sigma_{22}(-\Sigma_{12}\Sigma_{22}^{-1} - B)^T\\
+= &\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} + B\Sigma_{22}B^T
+\end{aligned}
+$$
+
+## Example of Efficiency of Unified Estimate
+
+The remaining details for the example are now given. For the estimating equations
+$$
+S(\theta,X) = \begin{pmatrix}
+R(y - \beta)\\
+R(x - \gamma)\\
+(x - \gamma^{\prime})
+\end{pmatrix}
+$$
+We did some math.
+
+# R Code {#allrcode}
+
+Any extra code you want to include could go here.
+
+```{r, echo = TRUE, eval = FALSE}
+set.seed(123)
+mean(rnorm(n = 20))
+```
+
+
+
+
